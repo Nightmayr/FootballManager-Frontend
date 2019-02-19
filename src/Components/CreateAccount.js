@@ -1,44 +1,69 @@
 import React, { Component } from 'react';
 import ManageSession from "./ManageSession";
+import axios from 'axios';
+import { AccCreate , BaseURL  } from '../constants';
+
 
 class CreateAccount extends Component {
 
-  constructor(props){
-    super(props);
+  constructor() {
+
+    super();
+
     this.state = {
-      roomNum: this.props.roomNum,
-      windowState: 0
+      name: '',
+      password: '',
+      id: '',
+     
     }
-    this.handleClick = this.handleClick.bind(this);
   }
 
+  handleChangeName = event => {
+    this.setState({ name: event.target.value });
 
-  handleClick(){
-      this.setState({
-        windowState: 1,
-      });
-    }
+  }
 
+  handleChangePassword = event => {
+    this.setState({ password: event.target.value });
 
+  }
+
+  handleChangeId = event => {
+    this.setState({ id: event.target.value });
+  }
+
+  handleSubmitAdd = () => {
+    axios({
+      method: "post",
+      url: BaseURL + AccCreate,
+      data: {
+        name: this.state.name,
+        password: this.state.password
+        
+       }
+     });
+  }
+  
   render() {
 
-    const Main = () =>{
+   
       return(
-        <div>
-          <h1>Class Successfully Created</h1>
-          <br/><br/>
-          <p>Room No: {this.state.roomNum}</p><br/>
-        </div>
-      );
-    }
+        <div id="accountButtons">
+<ul>
+     
+        <li> <input id = "nameInput" type="text"  onChange={this.handleChangeName} placeholder = "name" /></li>
+        <li> <input id = "passInput" type="text"  onChange={this.handleChangePassword} placeholder = "password"/></li>
 
 
-    return (
-      <div>
-        {this.state.windowState===0 && <Main/>}
-        {this.state.windowState===1 && <ManageSession roomNum = {this.state.roomNum}/>}
+        <button type="button" onClick={this.handleSubmitAdd}>Create</button>
+        </ul>
+
       </div>
-    );
+      );
+    
+
+
+   
   }
 }
 
