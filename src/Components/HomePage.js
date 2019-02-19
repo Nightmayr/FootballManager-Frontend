@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Jumbotron } from 'reactstrap';
 import { CreateAccountPageLink, ManageSessionPageLink } from '../constants.js';
 
 class HomePage extends Component {
@@ -16,18 +16,23 @@ class HomePage extends Component {
     return (
 
       <div id="landing-page">
+        <img src="/football.png" id="frontPic" alt="ball" />
         <br /> <br />
-        <header id="header-1"><h2>Monday Night Football Portal</h2></header>
-        <br /> <br />
-        <h4 id="header-2">Login or signup to join the next session.</h4>
-        <br /> <br />
-        <p id="tagline">Can you do it on a cold, rainy night in Stoke?</p>
-        <br /> <br />
-        Email: <input id='user-email' type='text' placeholder='j.s@academytrainee.com' required /><br /><br />
-        Password: <input id='password' type='text' placeholder='qwerty' required /><br /><br />
-        <Button id='login' bsStyle="primary" onClick={this.manageSessionPageLoad}>Login</Button>
-        <br /><br />
-        <Button id='create-account' bsStyle="primary" onClick={this.createAccountPageLoad}>Create Account</Button>
+        <div id="login-jumbotron">
+          {/* <Jumbotron> */}
+            <header id="header-1"><h1>Monday Night Football Portal</h1></header>
+            <br />
+            <h3 id="header-2">Login or signup to join the next session.</h3>
+            <br />
+            <h4 id="tagline">Can you do it on a cold, rainy night in Stoke?</h4>
+            <br />
+            <input id='user-email' type='text' placeholder='email' required /><br /><br />
+            <input id='password' type='password' placeholder='password' required /><br /><br />
+            <Button id='login' bsStyle="primary" onClick={this.manageSessionPageLoad}>Login</Button>
+            <br /> <br />
+            <Button id='create-account' bsStyle="primary" onClick={this.createAccountPageLoad}>Create Account</Button>
+          {/* </Jumbotron> */}
+        </div>
       </div>
     );
   }

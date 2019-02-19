@@ -41,6 +41,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+        <div className="bg-image" />
           <center>
             <Link to={ManageSessionPageLink} id='manage-portal' />
             <Link to={CreateAccountPageLink} id='create-portal' />

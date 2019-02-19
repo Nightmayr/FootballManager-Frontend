@@ -1,0 +1,50 @@
+.bg-image {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-image: url("./Images/footiebg.jpg");
+    /* filter: blur(2px); */
+    color: white;
+    background-size: cover;
+    background-position: center;
+    top: 0%;
+    z-index: -2;
+}
+
+#login-jumbotron {
+    position: absolute;
+    /* background: rgba(255, 255, 255, 0.8); */
+    color: white;
+    text-shadow:
+    -1px -1px 0 rgb(0, 0, 0),  
+    1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0),
+    1px 1px 0 rgb(0, 0, 0);
+    font-size: 1.2em;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+}
+
+img#frontPic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 600px;
+    max-height:60vh;
+    max-width:90vw;
+    margin-top: 100px;
+    animation: img-spin infinite 180s linear;
+    z-index: -1;
+    mix-blend-mode: darken;
+  }
+  
+  @keyframes img-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  } 
