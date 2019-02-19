@@ -14,17 +14,20 @@
 #login-jumbotron {
     position: absolute;
     /* background: rgba(255, 255, 255, 0.8); */
-    color: white;
-    text-shadow:
-    -1px -1px 0 rgb(0, 0, 0),  
-    1px -1px 0 rgb(0, 0, 0),
-    -1px 1px 0 rgb(0, 0, 0),
-    1px 1px 0 rgb(0, 0, 0);
     font-size: 1.2em;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30vw;
+}
+
+#header-1, #header-2, #tagline{
+    color: white;
+    text-shadow:
+    -1px -1px 0 rgb(0, 0, 0),
+    1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0),
+    1px 1px 0 rgb(0, 0, 0);
 }
 
 img#frontPic {
