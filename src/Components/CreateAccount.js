@@ -17,7 +17,7 @@ class CreateAccount extends Component {
       email: '',
       password: '',
       confirm: '',
-      id: '',
+      //id: '',
      
      
     }
@@ -34,9 +34,9 @@ class CreateAccount extends Component {
 
   }
 
-  handleChangeId = event => {
-    this.setState({ id: event.target.value });
-  }
+  //handleChangeId = event => {
+    //this.setState({ id: event.target.value });
+  //}
 
   handleChangeFullname = event => {
     this.setState({ fullName: event.target.value });
@@ -49,7 +49,7 @@ class CreateAccount extends Component {
   handleSubmitAdd = () => {
     if(this.state.fullName && this.state.email && this.state.password){
       if(this.state.password === this.state.confirm){
-        var hash = bcrypt.hashSync(this.state.password, 10);
+        let hash = bcrypt.hashSync(this.state.password, 10);
     axios({
       method: "post",
       url: BaseURL + AccCreate,
@@ -62,7 +62,7 @@ class CreateAccount extends Component {
        }
      });
    
-    window.open("/");
+    // window.open("/");
       } else {
         alert("Passwords don't match");
       }
