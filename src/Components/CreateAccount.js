@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomePage from "./HomePage";
 import axios from 'axios';
 import { AccCreate , BaseURL  } from '../constants';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 const bcrypt = require('bcryptjs');
 
 
@@ -13,7 +13,7 @@ class CreateAccount extends Component {
     super();
 
     this.state = {
-      fullname: '',
+      fullName: '',
       email: '',
       password: '',
       confirm: '',
@@ -39,7 +39,7 @@ class CreateAccount extends Component {
   }
 
   handleChangeFullname = event => {
-    this.setState({ fullname: event.target.value });
+    this.setState({ fullName: event.target.value });
   }
 
   handleChangeConfirmPassword = event => {
@@ -47,14 +47,14 @@ class CreateAccount extends Component {
   }
 
   handleSubmitAdd = () => {
-    if(this.state.fullname && this.state.email && this.state.password){
+    if(this.state.fullName && this.state.email && this.state.password){
       if(this.state.password === this.state.confirm){
         var hash = bcrypt.hashSync(this.state.password, 10);
     axios({
       method: "post",
       url: BaseURL + AccCreate,
       data: {
-        fullname: this.state.fullname,
+        fullName: this.state.fullName,
         email: this.state.email,
         password: hash, 
         playing : false
