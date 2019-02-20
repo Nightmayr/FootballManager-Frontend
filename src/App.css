@@ -42,6 +42,10 @@ img#frontPic {
     z-index: -1;
     mix-blend-mode: darken;
   }
+
+  ul#buttonRemoval{
+    list-style-type: none;
+  }
   
   @keyframes img-spin {
     from {

@@ -47,8 +47,9 @@ class App extends Component {
             <Link to={CreateAccountPageLink} id='create-portal' />
 
             <Route exact path="/" component={HomePage} />
-            <Route path={ManageSessionPageLink} render={(...props) => <ManageSession genRoomNumClick={this.handleClick} />} />
-            <Route path={CreateAccountPageLink} render={(...props) => <CreateAccount genRoomNumClick={this.handleClick} />} />
+            <Route path={ManageSessionPageLink} component={ManageSession} />
+            <Route path={CreateAccountPageLink} component = {CreateAccount} />
+           
           </center>
         </div>
       </Router>
