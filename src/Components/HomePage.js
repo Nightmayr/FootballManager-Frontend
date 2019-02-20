@@ -12,6 +12,8 @@ class HomePage extends Component {
     window.location.href = CreateAccountPageLink;
   }
 
+  
+
   render() {
     return (
 
