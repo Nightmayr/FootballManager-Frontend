@@ -30,6 +30,7 @@ class HomePage extends Component {
 }
 
   handleInput = (e) => {
+    if(this.state.email && this.state.password){
     axios({
       method: "get",
       url: BaseURL + PathToGetAccount,
@@ -44,7 +45,11 @@ class HomePage extends Component {
                     this.props.history.push("/");
                 }
             }
+          
           });
+        } else {
+          alert("Please fill in all fields");
+        }
           e.preventDefault();
         }
 
