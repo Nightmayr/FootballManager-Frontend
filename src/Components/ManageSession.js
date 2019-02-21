@@ -18,7 +18,14 @@ class ManageSession extends Component {
 			});
 			
 		});
+
+		for(let i=0; i<this.state.staff.length; i++){
+		this.state.players = this.state.players.concat(this.state.staff[i].fullName);
+		this.state.players = this.state.players.filter((val, id, array) => {
+			return array.indexOf(val) === id;
+		});
 	}
+}
 	render() {
 		
 		return (
@@ -29,7 +36,9 @@ class ManageSession extends Component {
 				<Button id='join-list' bsStyle="primary" onClick={this.props.genRoomNumClick}>Join</Button>
 				
 				<p id='tagline'>Here is a list of everyone that has been added already</p>
+				<ol>
 				{this.state.players.map((name) => <li>{name}</li>)}
+				</ol>
 			</div>
 		);
 	}
