@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Jumbotron } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { CreateAccountPageLink, ManageSessionPageLink, BaseURL, PathToGetAccount } from '../constants.js';
 import axios from 'axios';
 const bcrypt = require('bcryptjs');
@@ -30,6 +30,9 @@ class HomePage extends Component {
 }
 
   handleInput = (e) => {
+    console.log(this.state.email);
+    console.log(this.state.password);
+
     if(this.state.email && this.state.password){
     axios({
       method: "get",
@@ -45,7 +48,6 @@ class HomePage extends Component {
                     this.props.history.push("/");
                 }
             }
-          
           });
         } else {
           alert("Please fill in all fields");
