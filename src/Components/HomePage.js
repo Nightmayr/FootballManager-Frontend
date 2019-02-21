@@ -41,8 +41,7 @@ class HomePage extends Component {
           if (((this.state.email === accounts[account].email) || (this.state.email === accounts[account].fullName)) &&
             (bcrypt.compareSync(this.state.password === accounts[account].password))) {
             sessionStorage.setItem("user", JSON.stringify(accounts[account]));
-            // console.log(sessionStorage.getItem("user"));
-            this.props.history.push("/ManageSession")
+            console.log(sessionStorage.getItem("user"));
           }
         }
       });
@@ -54,8 +53,6 @@ class HomePage extends Component {
     
   }
   
-  
-
   render() {
     return (
 
