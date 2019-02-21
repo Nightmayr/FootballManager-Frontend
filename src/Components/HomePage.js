@@ -29,15 +29,7 @@ class HomePage extends Component {
     this.setState({ password: event.target.value });
   }
 
-  // handleSubmit = () => {
-  //   this.handleLogin,
-
-  // }
-
   handleLogin = (e) => {
-    // console.log(this.state.email);
-    // console.log(this.state.password);
-
     if (this.state.email && this.state.password) {
       axios({
         method: "get",
@@ -50,14 +42,19 @@ class HomePage extends Component {
             (bcrypt.compareSync(this.state.password === accounts[account].password))) {
             sessionStorage.setItem("user", JSON.stringify(accounts[account]));
             // console.log(sessionStorage.getItem("user"));
-          } this.props.history.push("/ManageSession")
+            this.props.history.push("/ManageSession")
+          }
         }
       });
+      this.manageSessionPageLoad();
     } else {
       alert("Please fill in all fields");
     }
     e.preventDefault();
+    
   }
+  
+  
 
   render() {
     return (

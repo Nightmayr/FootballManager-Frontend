@@ -8,13 +8,13 @@ class ManageSession extends Component {
 		super(props);
 
 		this.state = {
-			peeps: [],
+			staff: [],
 			players: []
 		}
 		axios.put(BaseURL + ChangeBool)
 		.then(response => {
 			this.setState({
-			  peeps: response.data
+			  staff: response.data
 			});
 			
 		});
