@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
-import { BaseURL, ChangeBool } from '../constants';
+import { BaseURL, getAccounts } from '../constants';
 
 class ManageSession extends Component {
 	constructor(props) {
@@ -12,14 +12,14 @@ class ManageSession extends Component {
 			players: []
 		}
 		this.update = (event) => {
-		axios.put(BaseURL + ChangeBool)
+		axios.get(BaseURL + getAccounts)
 		.then(response => {
 			this.setState({
 			  staff: response.data
 			});
 			
 		});
-
+		
 		for(let i=0; i<this.state.staff.length; i++){
 		this.state.players = this.state.players.concat(this.state.staff[i].fullName);
 		this.state.players = this.state.players.filter((val, id, array) => {

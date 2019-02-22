@@ -15,7 +15,9 @@ class CreateAccount extends Component {
       password: '',
       confirm: ''
     }
+   
   }
+  
 
   handleChangeFullname = event => {
     this.setState({ fullName: event.target.value });
