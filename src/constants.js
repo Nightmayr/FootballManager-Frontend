@@ -1,4 +1,4 @@
-export const BaseURL = "http://localhost:8081"
+export const BaseURL = "http://account:8081"
 export const CreateAccountPageLink = "/CreateAccount"
 export const ManageSessionPageLink = "/ManageSession"
 export const AccCreate = "/accounts/createAccount"
