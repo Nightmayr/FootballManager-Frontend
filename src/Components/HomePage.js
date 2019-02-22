@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import { CreateAccountPageLink, ManageSessionPageLink, BaseURL, PathToGetAccount } from '../constants.js';
+import { CreateAccountPageLink, ManageSessionPageLink, BaseURL, getAccounts , accounts} from '../constants.js';
 import axios from 'axios';
 const bcrypt = require('bcryptjs');
 
@@ -9,7 +9,8 @@ class HomePage extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      staff : []
     };
   }
 
@@ -31,21 +32,23 @@ class HomePage extends Component {
 
   handleLogin = (e) => {
     if (this.state.email && this.state.password) {
-      axios({
-        method: "get",
-        url: BaseURL + PathToGetAccount,
-        responseType: "json"
-      }).then(response => {
-        let accounts = response.data;
-        for (let account = 0; account < accounts.length; account++) {
-          if (((this.state.email === accounts[account].email) || (this.state.email === accounts[account].fullName)) &&
-            (bcrypt.compareSync(this.state.password === accounts[account].password))) {
-            sessionStorage.setItem("user", JSON.stringify(accounts[account]));
+      axios.get(BaseURL +  accounts +getAccounts)
+      .then(response => {
+        this.setState({
+          staff: response.data
+        })
+        for (let member = 0; member < this.state.staff.length; member++) {
+          if (((this.state.email === this.state.staff[member].email) || (this.state.email === this.state.staff[member].fullName)) &&
+            (bcrypt.compareSync(this.state.password, this.state.staff[member].password))) {
+              console.log ( "DATABSE CHEDKED");
+            sessionStorage.setItem("user", JSON.stringify(this.state.staff[member]));
             console.log(sessionStorage.getItem("user"));
+            this.manageSessionPageLoad();
           }
         }
       });
-      this.manageSessionPageLoad();
+      console.log("user not found");
+      console.log(this.state.staff);
     } else {
       alert("Please fill in all fields");
     }

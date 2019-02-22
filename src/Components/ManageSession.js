@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
-import { BaseURL, getAccounts } from '../constants';
+import { BaseURL, getAccounts , accounts } from '../constants';
 
 class ManageSession extends Component {
 	constructor(props) {
@@ -9,27 +9,39 @@ class ManageSession extends Component {
 
 		this.state = {
 			staff: [],
-			players: []
+			players: [],
+			fullName: "",
+			temp:"",
 		}
+	
 		this.update = (event) => {
-		axios.get(BaseURL + getAccounts)
-		.then(response => {
-			this.setState({
-			  staff: response.data
+			for(let i=0; i<this.state.staff.length; i++){
+			this.state.players = this.state.players.concat(this.state.staff[i].fullName);
+			this.state.players = this.state.players.filter((val, id, array) => {
+				return array.indexOf(val) === id;
 			});
-			
-		});
-		
-		for(let i=0; i<this.state.staff.length; i++){
-		this.state.players = this.state.players.concat(this.state.staff[i].fullName);
-		this.state.players = this.state.players.filter((val, id, array) => {
-			return array.indexOf(val) === id;
-		});
-	}
+		}
+		this.setState({});
+		}
 }
+
+componentDidMount(){
+
+	axios.get(BaseURL +  accounts + getAccounts)
+	.then(response => {
+		console.log("hit");
+		this.setState({
+		  staff: response.data,
+		  fullName: response.data[0].fullName
+		});
+	});
+	
+
+	
 }
+
 	render() {
-		
+	
 		return (
 			<div id="join-leave-session">
 
@@ -38,9 +50,10 @@ class ManageSession extends Component {
 				<Button id='join-list' bsStyle="primary" onClick={this.update}>Join</Button>
 				
 				<p id='tagline'>Here is a list of everyone that has been added already</p>
-				<ol>
-				{this.state.players.map((name) => <li>{name}</li>)}
+				<ol>	
+				{this.state.players.map((fullName) => <li>{fullName}</li>)}
 				</ol>
+				
 			</div>
 		);
 	}
