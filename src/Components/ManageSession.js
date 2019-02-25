@@ -33,7 +33,6 @@ componentDidMount(){
 
 		let stuff1 = this.state.players;
 		
-		console.log("hit");
 		this.setState({
 		  staff: response.data,
 		  fullName: response.data[0].fullName
@@ -54,12 +53,15 @@ componentDidMount(){
 	});
 	
 	this.method = (event) =>  {
-		axios.put(BaseURL +  accounts + "/changeBool/" + JSON.parse(sessionStorage.getItem("user")).accountId, sessionStorage.getItem("user"))
+
+		console.log(sessionStorage.getItem("user"));	
+
+
+		axios.put(BaseURL +  accounts + "/changeBool/" ,JSON.parse(sessionStorage.getItem("user")))
 	.then(response => {
 // http://localhost:8081/accounts/changeBool/"
 	console.log("yay");
-	console.log(JSON.parse(sessionStorage.getItem("user")).accountId, sessionStorage.getItem("user"));	
-
+	console.log(!JSON.parse(sessionStorage.getItem("user")).playing);	
 	})}
 	
 	
