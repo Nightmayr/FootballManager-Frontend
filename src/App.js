@@ -5,6 +5,7 @@ import { ManageSessionPageLink, CreateAccountPageLink } from './constants'
 import ManageSession from "./Components/ManageSession";
 import CreateAccount from "./Components/CreateAccount";
 import HomePage from "./Components/HomePage";
+import Nav from "./Components/Nav";
 
 
 class App extends Component {
@@ -15,12 +16,8 @@ class App extends Component {
         <div className="App">
           <div className="bg-image" />
           <center>
-            <Link to={ManageSessionPageLink} id='manage-portal' />
-            <Link to={CreateAccountPageLink} id='create-portal' />
-
-            <Route exact path="/" component={HomePage} />
-            <Route path={ManageSessionPageLink} component={ManageSession} />
-            <Route path={CreateAccountPageLink} component={CreateAccount} />
+          <Nav />
+      
 
           </center>
         </div>
