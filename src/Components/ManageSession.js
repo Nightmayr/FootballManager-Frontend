@@ -56,8 +56,9 @@ componentDidMount(){
 	this.method = (event) =>  {
 		axios.put(BaseURL +  accounts + "/changeBool/" + JSON.parse(sessionStorage.getItem("user")).accountId, sessionStorage.getItem("user"))
 	.then(response => {
-
-
+// http://localhost:8081/accounts/changeBool/"
+	console.log("yay");
+	console.log(JSON.parse(sessionStorage.getItem("user")).accountId, sessionStorage.getItem("user"));	
 
 	})}
 	
