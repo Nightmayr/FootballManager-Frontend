@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
-import { BaseURL, getAccounts , accounts, updateAccount } from '../constants';
+import { BaseURL, getAccounts , accounts, updateAccount, PathToGetAccount } from '../constants';
 
 class ManageSession extends Component {
 	constructor(props) {
@@ -62,6 +62,10 @@ componentDidMount(){
 // http://localhost:8081/accounts/changeBool/"
 	console.log("yay");
 	console.log(!JSON.parse(sessionStorage.getItem("user")).playing);	
+	axios.get(BaseURL + PathToGetAccount + JSON.parse(sessionStorage.getItem("user")).accountId)
+	.then(response => {
+		sessionStorage.setItem("user", JSON.stringify(response.data));
+	})
 	})}
 	
 	
