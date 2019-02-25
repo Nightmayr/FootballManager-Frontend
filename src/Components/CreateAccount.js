@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HomePage from "./HomePage";
 import axios from 'axios';
-import { AccCreate, BaseURL } from '../constants';
+import { AccCreate, BaseURL, ManageSessionPageLink } from '../constants';
 import { BrowserRouter as Route, Link } from "react-router-dom";
 const bcrypt = require('bcryptjs');
 
@@ -13,11 +13,12 @@ class CreateAccount extends Component {
       fullName: '',
       email: '',
       password: '',
-      confirm: ''
+      confirm: '',
+      message: ''
     }
-   
+
   }
-  
+
 
   handleChangeFullname = event => {
     this.setState({ fullName: event.target.value });
@@ -37,6 +38,10 @@ class CreateAccount extends Component {
     this.setState({ confirm: event.target.value });
   }
 
+  manageSessionPageLoad = () => {
+    window.location.href = ManageSessionPageLink;
+  }
+
   handleSubmitCreate = () => {
     if (this.state.fullName && this.state.email && this.state.password) {
       if (this.state.password === this.state.confirm) {
@@ -51,13 +56,18 @@ class CreateAccount extends Component {
             playing: false
 
           }
-        });
-
+        })
+        ;
+        this.manageSessionPageLoad();
       } else {
-        alert("Passwords don't match");
+        this.setState({
+          message: "Passwords don't match"
+        });
       }
     } else {
-      alert("Please fill out all fields");
+      this.setState({
+        message: "Please fill out all fields"
+      });
     }
   }
 
@@ -73,7 +83,7 @@ class CreateAccount extends Component {
           <li> <input id="emailInput" type="email" onChange={this.handleChangeEmail} placeholder="email" /></li>
           <li> <input id="passwordInput" type="password" onChange={this.handleChangePassword} placeholder="password" /></li>
           <li> <input id="confirmInput" type="password" onChange={this.handleChangeConfirmPassword} placeholder="confirm password" /></li>
-
+          <li id="errorMessage"> {this.state.message} </li>
           <Route exact path="/" component={HomePage} />
           <button id="createButton" type="button" onClick={this.handleSubmitCreate}>Create</button>
           <br></br><br></br>

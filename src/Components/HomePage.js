@@ -60,7 +60,7 @@ class HomePage extends Component {
     return (
 
       <div id="landing-page">
-        <img src="/football.png" id="frontPic" alt="ball" />
+        {/* <img src="/football.png" id="frontPic" alt="ball" /> */}
         <br /> <br />
         <div id="login-jumbotron">
 

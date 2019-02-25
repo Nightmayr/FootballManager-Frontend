@@ -2,7 +2,7 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background-image: url("./Images/footiebg.jpg");
+    background-image: url("/football.png");
     /* filter: blur(2px); */
     color: white;
     background-size: cover;
