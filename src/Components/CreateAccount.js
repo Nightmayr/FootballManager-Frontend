@@ -91,7 +91,7 @@ class CreateAccount extends Component {
           <li> <input id="confirmInput" type="password" onChange={this.handleChangeConfirmPassword} placeholder="confirm password" /></li>
           <br></br>
           <li id="errorMessage"> {this.state.message} </li>
-          <Route exact path="/" component={HomePage} />
+
           <br></br><br></br>
           <Button id="createButton" type="button" onClick={this.handleSubmitCreate}>Create</Button>
           
