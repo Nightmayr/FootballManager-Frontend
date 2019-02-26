@@ -10,6 +10,7 @@ class HomePage extends Component {
     this.state = {
       email: "",
       password: "",
+      message: "",
       staff : []
     };
   }
@@ -47,10 +48,14 @@ class HomePage extends Component {
           }
         }
       });
-      console.log("user not found");
+      this.setState({
+        message: "User not found"
+      });
       console.log(this.state.staff);
     } else {
-      alert("Please fill in all fields");
+      this.setState({
+        message: "Please fill in all fields"
+      });
     }
     e.preventDefault();
     
@@ -72,6 +77,8 @@ class HomePage extends Component {
           <br />
           <input id='user-email' type='text' placeholder='email' onChange={this.handleEmailChange} required /><br /><br />
           <input id='password' type='password' placeholder='password' onChange={this.handlePasswordChange} required /><br /><br />
+          <p id="errorMessageLogin">{this.state.message}</p>
+          <br></br>
           <Button id='login' class="button" onClick={this.handleLogin}>Login</Button>
           <br /> <br />
           <Button id='create-account' onClick={this.createAccountPageLoad}>Create Account</Button>

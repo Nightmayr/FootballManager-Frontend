@@ -62,7 +62,7 @@ class ManageSession extends Component {
 					<br></br>
 					<br></br>
 					<p id='tagline'>Here is a list of everyone that has been added already</p>
-					<ul>
+					<ul id="playerList">
 					{playerList}
 					</ul>
 				</div>

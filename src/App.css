@@ -46,6 +46,21 @@ img#frontPic {
   mix-blend-mode: darken;
 }
 
+#errorMessageCreate{
+  color: red;
+  font-size: 15px;
+}
+
+#errorMessageLogin{
+  color: red;
+  font-size: 15px;
+}
+
+/* h1{
+  color: rgb(21, 130, 255);
+  font-size: 50px;
+} */
+
 ul{
   list-style-type: none;
 }

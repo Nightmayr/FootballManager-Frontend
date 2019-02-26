@@ -67,7 +67,7 @@ class CreateAccount extends Component {
       }
     } else {
       this.setState({
-        message: "Please fill out all fields"
+        message: "Please fill in all fields"
       });
     }
   }
@@ -90,9 +90,9 @@ class CreateAccount extends Component {
           <br></br>
           <li> <input id="confirmInput" type="password" onChange={this.handleChangeConfirmPassword} placeholder="confirm password" /></li>
           <br></br>
-          <li id="errorMessage"> {this.state.message} </li>
+          <li id="errorMessageCreate"> {this.state.message} </li>
 
-          <br></br><br></br>
+          <br></br>
           <Button id="createButton" type="button" onClick={this.handleSubmitCreate}>Create</Button>
           
         </ul>
