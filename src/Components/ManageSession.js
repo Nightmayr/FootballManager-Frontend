@@ -13,61 +13,20 @@ class ManageSession extends Component {
 			players: []
 
 		}
-	
-		// this.update = (event) => {
-		// 	for(let i=0; i<this.state.staff.length; i++){
-		// 	this.state.players = this.state.players.concat(this.state.staff[i].fullName);
-		// 	this.state.players = this.state.players.filter((val, id, array) => {
-		// 		return array.indexOf(val) === id;
-		// 	});
-		// }
-		// this.setState({});
-		// }
-		
-}
+	}
 
 componentDidMount(){
 	
 	axios.get(BaseURL + accounts + getPlayers)
 		.then( trueplayers => {
-			console.log("step three");
 		this.setState({
 		players : trueplayers.data,
-	
-		// players : this.state.playersAsObject.fullName
-	
-	  });
+	 });
 	})
-// 		axios.put(BaseURL +  accounts + "/changeBool/" ,JSON.parse(sessionStorage.getItem("user")))
-// .then(response => {
-// 	console.log("step one");
-// // http://localhost:8081/accounts/changeBool/"
-
-
-// 		axios.get(BaseURL + PathToGetAccount + JSON.parse(sessionStorage.getItem("user")).accountId)
-// 		.then(response => {
-// 			console.log("step two");
-// 		sessionStorage.setItem("user", JSON.stringify(response.data));
-
-// 				//   console.log(this.state.playersAsObject);
-// 				//   console.log(this.state.playersAsObject[0].fullName);
-				
-				  
-				
-				  
-					 
-// 			})
-
-
-// 		})	
-
-
 }
 
 
 joinFunction = (event) =>  {
-
-	
 	axios.put(BaseURL +  accounts + "/changeBool/" ,JSON.parse(sessionStorage.getItem("user")))
 .then(response => {
 	console.log("step one");
@@ -84,42 +43,11 @@ joinFunction = (event) =>  {
 						console.log("step three");
 					this.setState({
 					players : trueplayers.data,
-
-			   
-				   }
-				//    , () => {
-				// 	for(let i = 0 ; i < this.state.playersAsObject.length ; i++) {
-				// 		console.log(this.state.playersAsObject[i].fullName);
-				// 		// this.setState({ players: this.state.players.push(this.state.playersAsObject[i].fullName) })
-	
-				// 	  }
-				// 	  console.log(this.state.playersAsObject);
-				// 	  console.log(this.state.players);
-				//    }
+					}
 				   );
-		
-				  
-				
-				  
-				
-				  
-					 
 			})
-
-
 		})	
-	
-	
-	
-	
-	
 	})
-
-
-
-
-
-
 }
 
 	render() {
