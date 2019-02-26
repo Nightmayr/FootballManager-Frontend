@@ -72,7 +72,7 @@ class HomePage extends Component {
           <br />
           <input id='user-email' type='text' placeholder='email' onChange={this.handleEmailChange} required /><br /><br />
           <input id='password' type='password' placeholder='password' onChange={this.handlePasswordChange} required /><br /><br />
-          <Button id='login' onClick={this.handleLogin}>Login</Button>
+          <Button id='login' class="button" onClick={this.handleLogin}>Login</Button>
           <br /> <br />
           <Button id='create-account' onClick={this.createAccountPageLoad}>Create Account</Button>
 

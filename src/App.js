@@ -17,7 +17,6 @@ class App extends Component {
           <div className="bg-image" />
           <center>
           <Nav />
-      
 
           </center>
         </div>

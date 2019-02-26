@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HomePage from "./HomePage";
 import axios from 'axios';
+import { Button } from 'reactstrap';
 import { AccCreate, BaseURL, ManageSessionPageLink } from '../constants';
 import { BrowserRouter as Route, Link } from "react-router-dom";
 const bcrypt = require('bcryptjs');
@@ -75,20 +76,27 @@ class CreateAccount extends Component {
     return (
 
       <div id="accountCreate">
+      <div id="login-jumbotron">
         <ul id="accountCreateForm">
+        
           <br></br>
-          <h3 id="header-2">Fill out the fields below to create an account.</h3>
+          <h2 id="header-2">Fill out the fields below to create an account.</h2>
           <br></br>
-          <li> <input id="fullNameInput" type="text" onChange={this.handleChangeFullname} placeholder="fullname" /></li>
+          <li> <input id="fullNameInput" type="text" onChange={this.handleChangeFullname} placeholder="full name" /></li>
+          <br></br>
           <li> <input id="emailInput" type="email" onChange={this.handleChangeEmail} placeholder="email" /></li>
+          <br></br>
           <li> <input id="passwordInput" type="password" onChange={this.handleChangePassword} placeholder="password" /></li>
+          <br></br>
           <li> <input id="confirmInput" type="password" onChange={this.handleChangeConfirmPassword} placeholder="confirm password" /></li>
+          <br></br>
           <li id="errorMessage"> {this.state.message} </li>
           <Route exact path="/" component={HomePage} />
-          <button id="createButton" type="button" onClick={this.handleSubmitCreate}>Create</button>
           <br></br><br></br>
-          <li><Link id="backButton" to="/">Back</Link></li>
+          <Button id="createButton" type="button" onClick={this.handleSubmitCreate}>Create</Button>
+          
         </ul>
+        </div>
       </div>
     );
   }

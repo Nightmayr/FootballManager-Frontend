@@ -16,23 +16,28 @@ import CreateAccount from './CreateAccount.js';
 class Nav extends Component {
     render() {
         return (
+
+
             <Router>
-            <div >
-                <div>
-            <ul id = "navigationbarul">
-            <li id = "hbut"><Link to="/">Home</Link></li>
-            <li id = "tbut"><Link to="/session">Who's Playing</Link></li>
-            <li id = "cbut"><Link to="/reg">Register your Account</Link></li>
-            </ul>
-           
 
-            </div>
+                <div >
+                    <div>
+                        <ul id="navigationbarul">
+                            <li id = "navImg"><Link to="/"><img src="../QAfootball.png"  alt="ball" width="40" height="25"/></Link></li>
+                            <li id="hbut"><Link to="/">Login</Link></li>
+                            <li id="cbut"><Link to="/register">Register</Link></li>
+                            <li id="tbut"><Link to="/session">Who's Playing</Link></li>
 
-            <Route exact path="/" component={HomePage} />
-            <Route path ="/session" component={Table} />
-            <Route path ="/reg" component={CreateAccount} />
-        
-            </div>
+                        </ul>
+
+
+                    </div>
+
+                    <Route exact path="/" component={HomePage} />
+                    <Route path="/session" component={Table} />
+                    <Route path="/register" component={CreateAccount} />
+
+                </div>
             </Router>
         );
     }

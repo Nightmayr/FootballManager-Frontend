@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button } from 'reactstrap';
 import axios from 'axios';
 import { BaseURL, getAccounts , accounts, updateAccount } from '../constants';
 
@@ -68,17 +68,19 @@ componentDidMount(){
 	
 		return (
 			<div id="join-leave-session">
-
+			<div id="login-jumbotron">
 				<header id="header-1"><h2>Monday Night Football Squad</h2></header>
 				<br /><br />
 				
 				<Button id='join-list' bsStyle="primary" onClick={this.update}>List display</Button>
 				<Button id='join-list' bsStyle="primary" onClick={this.method}>Join</Button>
+				<br></br>
+				<br></br>
 				<p id='tagline'>Here is a list of everyone that has been added already</p>
 				<ul>	
 				{this.state.players.map((fullName) => <li>{fullName}</li>)}
 				</ul>
-				
+				</div>
 			</div>
 		);
 	}
