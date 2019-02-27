@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomePage from "./HomePage";
 import axios from 'axios';
 import { Button } from 'reactstrap';
-import { AccCreate, BaseURL, ManageSessionPageLink, qaStaff, qaTrainee } from '../constants';
+import { AccCreate, BaseURL, ManageSessionPageLink, qaStaff, qaTrainee, accounts, getAccounts } from '../constants';
 import { BrowserRouter as Route, Link } from "react-router-dom";
 const bcrypt = require('bcryptjs');
 
@@ -15,7 +15,8 @@ class CreateAccount extends Component {
       email: '',
       password: '',
       confirm: '',
-      message: ''
+      message: '',
+      staff: []
     }
 
   }
@@ -43,6 +44,21 @@ class CreateAccount extends Component {
     window.location.href = ManageSessionPageLink;
   }
 
+  manageLogin = () => {
+    axios.get(BaseURL +  accounts + getAccounts)
+      .then(response => {
+        this.setState({
+          staff: response.data
+        })
+        for (let member = 0; member < this.state.staff.length; member++) {
+          if (this.state.email === this.state.staff[member].email) {
+            sessionStorage.setItem("user", JSON.stringify(this.state.staff[member]));
+            this.manageSessionPageLoad();
+          }
+        }
+      });
+  }
+
   handleSubmitCreate = () => {
     if(!(this.state.email.includes(qaTrainee))&&!(this.state.email.includes(qaStaff))){
       this.setState({ message: "You must use a QA email to login" });
@@ -58,11 +74,9 @@ class CreateAccount extends Component {
             email: this.state.email,
             password: hash,
             playing: false
-
           }
-        })
-        ;
-        this.manageSessionPageLoad();
+        });
+        this.manageLogin();
       } else {
         this.setState({
           message: "Passwords don't match"

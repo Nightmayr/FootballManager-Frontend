@@ -57,10 +57,14 @@ class ManageSession extends Component {
 		return (
 			<div id="join-leave-session" >
 					<header id="header-1"><h2>Monday Night Football Squad</h2></header>
-					<br /><br />
-					<Button id='join-list' bsStyle="primary" onClick={this.joinFunction}>Join</Button>
-					<br></br>
-					<br></br>
+					{sessionStorage.getItem("user") !== null &&
+					<div>
+						<br />
+						<Button id='join-list' bsStyle="primary" onClick={this.joinFunction}>Join</Button>
+						<br />
+						<br />
+					</div>
+					}
 					<p id='tagline'>Here is a list of everyone that has been added already</p>
 					<Table id="playerList" bordered striped>
 						<thead>
