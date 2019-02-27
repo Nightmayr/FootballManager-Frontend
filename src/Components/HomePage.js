@@ -90,7 +90,7 @@ class HomePage extends Component {
           <br></br>
           <Button id='login' class="button" onClick={this.handleLogin}>Login</Button>
           <br /> <br />
-          <Button id='create-account' onClick={this.createAccountPageLoad}>Create Account</Button>
+          {/* <Button id='create-account' onClick={this.createAccountPageLoad}>Create Account</Button> */}
 
         </div>
       </div>
