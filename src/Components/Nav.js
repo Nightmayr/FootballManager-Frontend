@@ -29,7 +29,8 @@ class Nav extends Component {
                             {sessionStorage.getItem("user") === null ? (
                                 [
                                     <li id="hbut"><Link to="/">Login</Link></li>,
-                                    <li id="cbut"><Link to="/register">Register</Link></li>
+                                    <li id="cbut"><Link to="/register">Register</Link></li>,
+                                    <li id="tbut"><Link to="/session">Who's Playing</Link></li>
                                 ]
                             ) : (
                                 [
