@@ -76,8 +76,9 @@ class CreateAccount extends Component {
             password: hash,
             playing: false
           }
+        }).then( () => {
+          this.manageLogin();
         });
-        this.manageLogin();
       } else {
         this.setState({
           message: "Passwords don't match"
