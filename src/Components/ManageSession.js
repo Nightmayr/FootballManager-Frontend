@@ -11,6 +11,7 @@ class ManageSession extends Component {
 			staff: [],
 			players: [],
 			playersAsObject: [],
+			message: ""
 
 		}
 
@@ -41,6 +42,7 @@ class ManageSession extends Component {
 								console.log("step three");
 								this.setState({
 									players: trueplayers.data,
+									message: "List has been updated"
 								}
 								);
 							})
@@ -62,7 +64,7 @@ class ManageSession extends Component {
 					<Button id='join-list' bsStyle="primary" onClick={this.joinFunction}>Join</Button>
 					<br></br>
 					<br></br>
-					<p id='tagline'>Here is a list of everyone that has been added already</p>
+					<p id='updateMessageJoin'>{this.state.message}</p>
 					<Table id="playerList" bordered striped>
 						<thead>
 						<tr>

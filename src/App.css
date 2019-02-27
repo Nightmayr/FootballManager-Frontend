@@ -56,6 +56,11 @@ img#frontPic {
   font-size: 15px;
 }
 
+#updateMessageJoin{
+  colour: #005BAB;
+  font-size:15px
+}
+
 /* h1{
   color: rgb(21, 130, 255);
   font-size: 50px;
