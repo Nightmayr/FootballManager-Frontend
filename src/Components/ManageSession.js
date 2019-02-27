@@ -11,8 +11,8 @@ class ManageSession extends Component {
 			staff: [],
 			players: [],
 			playersAsObject: [],
-			message: ""
-
+			message: " ",
+			joinButton: ""
 		}
 
 	}
@@ -26,60 +26,73 @@ class ManageSession extends Component {
 				this.setState({
 					players: trueplayers.data,
 				});
+				this.joinButton();
 			})
+		
+	}
+
+	joinButton = () => {
+		if(JSON.parse(sessionStorage.getItem("user")).playing === true) {
+			this.setState({ joinButton: "Remove"});
+		} else {
+			this.setState({ joinButton: "Join" });
+		}
 	}
 
 	joinFunction = (event) => {
 		axios.put(BaseURL + accounts + changeBool, JSON.parse(sessionStorage.getItem("user")))
 			.then(response => {
-				console.log("step one");
 				axios.get(BaseURL + PathToGetAccount + JSON.parse(sessionStorage.getItem("user")).accountId)
 					.then(response => {
-						console.log("step two");
 						sessionStorage.setItem("user", JSON.stringify(response.data));
 						axios.get(BaseURL + accounts + getPlayers)
 							.then(trueplayers => {
-								console.log("step three");
 								this.setState({
 									players: trueplayers.data,
 									message: "List has been updated"
-								}
-								);
+								});
+								this.joinButton();
 							})
 					})
 			})
 	}
 
 	render() {
-		const playerList = this.state.players.map((item) => (
+		const playerList = this.state.players.map((item, i) => (
 			<tr>
+				<td id="playerNo">{i+1}</td>
 				<td id="playerListEntry">{item.fullName}</td>
 			</tr>
 		));
 		return (
-			<div id="login-jumbotron">
 			<div id="join-leave-session" >
+				<div id="session-text">
 					<header id="header-1"><h2>Monday Night Football Squad</h2></header>
 					{sessionStorage.getItem("user") !== null &&
 					<div>
 						<br />
-						<Button id='join-list' bsStyle="primary" onClick={this.joinFunction}>Join</Button>
+						<Button id='join-list' bsStyle="primary" onClick={this.joinFunction}>
+						{this.state.joinButton}
+						</Button>
 						<br />
 						<br />
 					</div>
 					}
 					<p id='updateMessageJoin'>{this.state.message}</p>
-					<Table id="playerList" bordered striped>
+				</div>
+					<div id="scrollTable">
+					<Table id="playerList" bordered striped responsive size="l">
 						<thead>
 						<tr>
-							<th>Name</th>
+							<th scope="row" id="number">#</th>
+							<th id="name">Name</th>
 						</tr>
 						</thead>
 						<tbody id="playerListBody">
 							{playerList}
 						</tbody>
 					</Table>
-			</div>
+					</div>
 			</div>
 		);
 	}

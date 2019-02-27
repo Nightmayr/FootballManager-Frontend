@@ -11,17 +11,7 @@
   top: 0%;
   z-index: -2;
   mix-blend-mode: darken;
-  /* animation: img-spin infinite 180s linear; */
-}
-
-#login-jumbotron {
-  position: absolute;
-  /* background: rgba(255, 255, 255, 0.8); */
-  font-size: 1.2em;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30vw;
+  /* animation: img-spin infinite 2s linear; */
 }
 
 #header-1, #header-2, #tagline{
@@ -125,8 +115,37 @@ body {
   padding: 1%;
 }
 
-#playerList {
-  max-width: 300px;
-  background-color: white;
+#session-text {
+  width: 500px;
+  height: 200px;
+  margin: 5% auto;
+  margin-top: 10vh;
+  left: 0;
+  right: 0;
 }
 
+#scrollTable {
+  position: relative;
+  width: 500px;
+  margin: 5% auto;
+  left: 0;
+  right: 0;
+  background-color: white;
+  max-height: 40vh;
+  overflow: auto;
+  max-width: 600px;  
+  float: none;
+  margin-top: -90px;
+  font-size: 1.5em;
+}
+
+#scrollTable Table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#scrollTable th {
+  background-color: white;
+  position: sticky;
+  top: 0;
+}
