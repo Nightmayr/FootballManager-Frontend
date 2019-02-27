@@ -62,7 +62,7 @@ class ManageSession extends Component {
 					<br></br>
 					<br></br>
 					<p id='tagline'>Here is a list of everyone that has been added already</p>
-					<Table id="playerList">
+					<Table id="playerList" bordered striped>
 						<thead>
 						<tr>
 							<th>Name</th>

@@ -24,11 +24,17 @@ class HomePage extends Component {
   }
 
   handleEmailChange = (event) => {
-    this.setState({ email: event.target.value });
+    this.setState({
+	 email: event.target.value,
+	 message: ""
+    });
   }
 
   handlePasswordChange = (event) => {
-    this.setState({ password: event.target.value });
+    this.setState({
+	password: event.target.value,
+	message: ""
+    });
   }
 
   handleLogin = (e) => {
@@ -38,18 +44,21 @@ class HomePage extends Component {
         this.setState({
           staff: response.data
         })
+	var loggedIn = false;
         for (let member = 0; member < this.state.staff.length; member++) {
           if (((this.state.email === this.state.staff[member].email) || (this.state.email === this.state.staff[member].fullName)) &&
             (bcrypt.compareSync(this.state.password, this.state.staff[member].password))) {
               console.log ( "DATABSE CHEDKED");
             sessionStorage.setItem("user", JSON.stringify(this.state.staff[member]));
             console.log(sessionStorage.getItem("user"));
-            this.manageSessionPageLoad();
+            loggedIn = true;
           }
         }
-      });
-      this.setState({
-        message: "User not found"
+        if(loggedIn) {
+          this.manageSessionPageLoad();
+        } else {
+          this.setState({ message: "User not found" });
+        }
       });
       console.log(this.state.staff);
     } else {
