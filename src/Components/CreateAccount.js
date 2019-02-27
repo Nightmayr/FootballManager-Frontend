@@ -44,11 +44,12 @@ class CreateAccount extends Component {
   }
 
   handleSubmitCreate = () => {
-    if(!(this.state.email.includes(qaTrainee))&&!(this.state.email.includes(qaStaff))){
-      this.setState({ message: "You must use a QA email to login" });
-    }
-    else if (this.state.fullName && this.state.email && this.state.password) {
-      if (this.state.password === this.state.confirm) {
+    
+    if (this.state.fullName && this.state.email && this.state.password) {
+      if(!(this.state.email.includes(qaTrainee))&&!(this.state.email.includes(qaStaff))){
+        this.setState({ message: "You must use a QA email to create an account" });
+      }
+      else if (this.state.password === this.state.confirm) {
         let hash = bcrypt.hashSync(this.state.password, 10);
         axios({
           method: "post",
@@ -69,9 +70,17 @@ class CreateAccount extends Component {
         });
       }
     } else {
+      if(!(this.state.email) || !(this.state.fullName) || !(this.state.password)){
+        this.setState({
+          message: "Please fill in all fields"
+        });
+      }
+
+      else{
       this.setState({
         message: "Please fill in all fields"
       });
+    }
     }
   }
 

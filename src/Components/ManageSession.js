@@ -55,6 +55,7 @@ class ManageSession extends Component {
 			</tr>
 		));
 		return (
+			<div id="login-jumbotron">
 			<div id="join-leave-session" >
 					<header id="header-1"><h2>Monday Night Football Squad</h2></header>
 					<br /><br />
@@ -72,6 +73,7 @@ class ManageSession extends Component {
 							{playerList}
 						</tbody>
 					</Table>
+			</div>
 			</div>
 		);
 	}
