@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import { CreateAccountPageLink, ManageSessionPageLink, BaseURL, getAccounts , accounts} from '../constants.js';
+import { CreateAccountPageLink, ManageSessionPageLink, BaseURL, getAccounts , accounts, qaTrainee, qaStaff} from '../constants.js';
 import axios from 'axios';
 const bcrypt = require('bcryptjs');
 
@@ -38,7 +38,10 @@ class HomePage extends Component {
   }
 
   handleLogin = (e) => {
-    if (this.state.email && this.state.password) {
+    if(!(this.state.email.includes(qaTrainee))&&!(this.state.email.includes(qaStaff))){
+      this.setState({ message: "You must use a QA email to login" });
+    }
+    else if (this.state.email && this.state.password) {
       axios.get(BaseURL +  accounts +getAccounts)
       .then(response => {
         this.setState({
@@ -84,8 +87,8 @@ class HomePage extends Component {
           <br />
           <h4 id="tagline">Can you do it on a cold, rainy night in Stoke?</h4>
           <br />
-          <input id='user-email' type='text' placeholder='email' onChange={this.handleEmailChange} required /><br /><br />
-          <input id='password' type='password' placeholder='password' onChange={this.handlePasswordChange} required /><br /><br />
+          <input id='user-email' type='text' placeholder='Email' onChange={this.handleEmailChange} required /><br /><br />
+          <input id='password' type='password' placeholder='Password' onChange={this.handlePasswordChange} required /><br /><br />
           <p id="errorMessageLogin">{this.state.message}</p>
           <br></br>
           <Button id='login' class="button" onClick={this.handleLogin}>Login</Button>
