@@ -119,3 +119,8 @@ body {
   background-color: whitesmoke;
   padding: 1%;
 }
+
+#playerList {
+  max-width: 300px;
+  background-color: white;
+}
