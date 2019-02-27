@@ -11,7 +11,17 @@
   top: 0%;
   z-index: -2;
   mix-blend-mode: darken;
-  /* animation: img-spin infinite 2s linear; */
+  /* animation: img-spin infinite 180s linear; */
+}
+
+#login-jumbotron {
+  position: absolute;
+  /* background: rgba(255, 255, 255, 0.8); */
+  font-size: 1.2em;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
 }
 
 #header-1, #header-2, #tagline{
