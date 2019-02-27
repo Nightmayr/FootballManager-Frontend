@@ -51,7 +51,7 @@ class ManageSession extends Component {
 	render() {
 		const playerList = this.state.players.map((item) => (
 			<tr>
-				<td>{item.fullName}</td>
+				<td id="playerListEntry">{item.fullName}</td>
 			</tr>
 		));
 		return (
@@ -68,7 +68,7 @@ class ManageSession extends Component {
 							<th>Name</th>
 						</tr>
 						</thead>
-						<tbody>
+						<tbody id="playerListBody">
 							{playerList}
 						</tbody>
 					</Table>
