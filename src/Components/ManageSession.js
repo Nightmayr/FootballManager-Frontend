@@ -12,7 +12,8 @@ class ManageSession extends Component {
 			players: [],
 			playersAsObject: [],
 			message: " ",
-			joinButton: ""
+			joinButton: "",
+			isButtonDisabled: false
 		}
 
 	}
@@ -32,14 +33,23 @@ class ManageSession extends Component {
 	}
 
 	joinButton = () => {
-		if(JSON.parse(sessionStorage.getItem("user")).playing === true) {
-			this.setState({ joinButton: "Remove"});
-		} else {
-			this.setState({ joinButton: "Join" });
+		if(sessionStorage.getItem("user") !== null) {
+			if(JSON.parse(sessionStorage.getItem("user")).playing === true) {
+				this.setState({ joinButton: "Remove"});
+			} else {
+				this.setState({ joinButton: "Join" });
+			}
 		}
 	}
 
 	joinFunction = (event) => {
+		event.preventDefault();
+    this.setState({
+        isButtonDisabled: true
+    });
+
+	setTimeout(() => this.setState({ isButtonDisabled: false }), 200);
+	
 		axios.put(BaseURL + accounts + changeBool, JSON.parse(sessionStorage.getItem("user")))
 			.then(response => {
 				axios.get(BaseURL + PathToGetAccount + JSON.parse(sessionStorage.getItem("user")).accountId)
@@ -71,7 +81,7 @@ class ManageSession extends Component {
 					{sessionStorage.getItem("user") !== null &&
 					<div>
 						<br />
-						<Button id='join-list' bsStyle="primary" onClick={this.joinFunction}>
+						<Button id='join-list' bsStyle="primary" onClick={this.joinFunction} disabled={this.state.isButtonDisabled}>
 						{this.state.joinButton}
 						</Button>
 						<br />

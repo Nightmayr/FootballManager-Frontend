@@ -136,14 +136,14 @@ body {
 
 #scrollTable {
   position: relative;
-  width: 500px;
+  width: 50vw;
   margin: 5% auto;
   left: 0;
   right: 0;
   background-color: white;
-  max-height: 40vh;
+  max-height: 50vh;
   overflow: auto;
-  max-width: 600px;  
+  max-width: 500px;  
   float: none;
   margin-top: -90px;
   font-size: 1.5em;
