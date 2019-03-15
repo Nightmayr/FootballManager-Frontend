@@ -1,5 +1,8 @@
-export const BaseURL = "http://localhost:8081"
+// Local
+// export const BaseURL = "http://localhost:8081"
 // export const BaseURL = "http://35.189.117.216:8081"
+// k8s
+export const BaseURL = ""
 export const CreateAccountPageLink = "/register"
 export const ManageSessionPageLink = "/session"
 export const AccCreate = "/accounts/createAccount"
